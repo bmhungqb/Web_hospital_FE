@@ -6,7 +6,8 @@ import { push } from "connected-react-router";
 import * as actions from "../../store/actions";
 import './Login.scss';
 import { FormattedMessage } from 'react-intl';
-
+import { handleLoginApi } from '../../services/userService';
+import e from 'cors';
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -14,10 +15,12 @@ class Login extends Component {
             username: "",
             password: "",
             isShowPassword: false,
+            errMessage: ""
         }
     }
 
     handleOnchangeUsername = (event) => {
+        console.log(this.state.username);
         this.setState({
             username: event.target.value
         })
@@ -25,11 +28,32 @@ class Login extends Component {
 
     handleOnchangePassword = (event) => {
         this.setState({
-            username: event.target.value
+            password: event.target.value
         })
     }
-    handleLogin = (event) => {
-        console.log("username: " + this.state.username)
+    handleLogin = async () => {
+        this.setState({
+            errMessage: ''
+        })
+        try {
+            let data = await handleLoginApi(this.state.username, this.state.password);
+            if (data && data.errCode !== 0) {
+                this.setState({
+                    errMessage: data.message
+                })
+            }
+            if (data && data.errCode === 0) {
+                this.props.userLoginSuccess(data.user)
+            }
+        } catch (error) {
+            if (error.response) {
+                if (error.response.data) {
+                    this.setState({
+                        errMessage: error.response.data.message
+                    })
+                }
+            }
+        }
     }
     handleShowHidePassword = () => {
         this.setState({
@@ -51,7 +75,7 @@ class Login extends Component {
                                 className='form-control'
                                 placeholder='Enter your username'
                                 value={this.state.username}
-                                onChange={(event) => { this.handleOnchangeUsername(event) }}
+                                onChange={(e) => { this.handleOnchangeUsername(e) }}
                             />
                         </div>
                         <div className='col-12 form-group login-input'>
@@ -61,15 +85,19 @@ class Login extends Component {
                                     className='form-control'
                                     type={this.state.isShowPassword ? "text" : "password"}
                                     placeholder='Enter your password'
-                                    onChange={(event) => { this.handleOnchangePassword(event) }}
+                                    value={this.state.password}
+                                    onChange={(e) => { this.handleOnchangePassword(e) }}
                                 />
                                 <span
                                     onClick={() => { this.handleShowHidePassword() }}>
                                     <i class={this.state.isShowPassword ? "fas fa-eye" : "fas fa-eye-slash"}></i></span>
                             </div>
                         </div>
+                        <div className='col-12' style={{ color: 'red' }}>
+                            {this.state.errMessage}
+                        </div>
                         <div className='col-12'>
-                            <button className='btn-login' onClick={(event) => { this.handleLogin(event) }}>Login</button>
+                            <button className='btn-login' onClick={() => { this.handleLogin() }}>Login</button>
                         </div>
                         <div className='col-12'>
                             <span className='forgot-password'>Forgot your password?</span>
@@ -97,8 +125,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         navigate: (path) => dispatch(push(path)),
-        adminLoginSuccess: (adminInfo) => dispatch(actions.adminLoginSuccess(adminInfo)),
-        adminLoginFail: () => dispatch(actions.adminLoginFail()),
+        // userLoginFail: () => dispatch(actions.adminLoginFail()),
+        userLoginSuccess: (userInfor) => dispatch(actions.userLoginSuccess(userInfor))
     };
 };
 
