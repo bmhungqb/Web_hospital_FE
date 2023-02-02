@@ -3,10 +3,16 @@ import { connect } from 'react-redux';
 import './homeHeader.scss'
 import logo from '../../assets/images/logo.svg'
 import { FormattedMessage } from 'react-intl';
-
+import { LANGUAGES } from '../../utils'
+import { changeLanguageApp } from '../../store/actions/appActions';
 class HomeHeader extends Component {
 
+    changeLanguage = (language) => {
+        this.props.changeLanguageAppRedux(language)
+        //fire redux event: actions
+    }
     render() {
+        let language = this.props.language;
 
         return (
             <React.Fragment>
@@ -36,11 +42,11 @@ class HomeHeader extends Component {
                         </div>
                         <div className='right-content'>
                             <div className='support'><i className="fa fa-question-circle"></i><FormattedMessage id="homeheader.support" /></div>
-                            <div className='language-vi'>VN</div>
-                            <div className='language-en'>EN</div>
+                            <div className={language === LANGUAGES.VI ? 'language-vi active' : "language-vi"}><span onClick={() => this.changeLanguage(LANGUAGES.VI)} > VN</span></div>
+                            <div className={language === LANGUAGES.EN ? 'language-en active' : "language-en"}><span onClick={() => this.changeLanguage(LANGUAGES.EN)} > EN</span></div>
                         </div>
                     </div>
-                </div>
+                </div >
                 <div className='home-header-banner'>
                     <div className='content-up'>
                         <div className='title1'><FormattedMessage id="homeheader.title1" /></div>
@@ -72,7 +78,7 @@ class HomeHeader extends Component {
                         <div className='options'>
                             <div className='option-child'>
                                 <div className='icon-child'><i className='far fa-hospital'></i></div>
-                                <div className='text-child'><FormattedMessage id="child3" /></div>
+                                <div className='text-child'><FormattedMessage id="banner.child3" /></div>
                             </div>
                         </div>
                         <div className='options'>
@@ -95,7 +101,7 @@ class HomeHeader extends Component {
                         </div>
                     </div>
                 </div>
-            </React.Fragment>
+            </React.Fragment >
         );
     }
 
@@ -110,6 +116,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
+        changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language))
     };
 };
 
