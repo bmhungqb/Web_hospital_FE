@@ -1,0 +1,16 @@
+.section-specialty {
+    height: 330px;
+    background: #f5f5f5;
+}
+
+//reset slick slider css
+.slick-prev {
+    border: 1px solid green($color: #000000) !important;
+    position: relative !important;
+    left: 0 !important
+}
+
+.slick-next {
+    border: 1px solid red($color: #000000) !important;
+    right: 0 !important
+}
