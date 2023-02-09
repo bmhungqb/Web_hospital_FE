@@ -24,15 +24,15 @@ class OutstandingDoctor extends Component {
     }
     render() {
         let arrDoctors = this.state.arrDoctors;
-        console.log('arr Doctors:', arrDoctors);
         let { language } = this.props;
-        arrDoctors = arrDoctors.concat(arrDoctors).concat(arrDoctors).concat(arrDoctors).concat(arrDoctors).concat(arrDoctors);
         return (
             <div className='section-share section-outstanding-doctor'>
                 <div className='section-container'>
                     <div className='section-header'>
-                        <span className='title-section'>Bac si noi bat tuan qua</span>
-                        <button className='btn-section'>Xem them</button>
+                        <span className='title-section'>
+                            <FormattedMessage id='homepage.outstanding-doctor' />
+                        </span>
+                        <button className='btn-section'><FormattedMessage id='homepage.more-info' /></button>
                     </div>
                     <div className='section-body'>
                         <Slider {...this.props.settings}>
