@@ -60,6 +60,11 @@ class Login extends Component {
             isShowPassword: !this.state.isShowPassword,
         })
     }
+    handleKeyDown = (e) => {
+        if (e.key === 'Enter' || e.keyCode === 13) {
+            this.handleLogin();
+        }
+    }
     render() {
         // JSX
 
@@ -87,6 +92,7 @@ class Login extends Component {
                                     placeholder='Enter your password'
                                     value={this.state.password}
                                     onChange={(e) => { this.handleOnchangePassword(e) }}
+                                    onKeyDown={(e) => { this.handleKeyDown(e) }}
                                 />
                                 <span
                                     onClick={() => { this.handleShowHidePassword() }}>
