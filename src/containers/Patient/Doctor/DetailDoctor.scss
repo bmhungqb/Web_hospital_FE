@@ -1,5 +1,6 @@
 .doctor-detail-container {
     height: 500px;
+
     .intro-doctor {
         display: flex;
         margin: 0 100px;
@@ -30,21 +31,37 @@
             }
         }
     }
-    .detail-infor-doctor{
+
+    .schedule-doctor {
+        margin: 0 100px;
+        display: flex;
+        height: 200px;
+
+        .content-left {
+            width: 50%;
+        }
+
+        .content-right {
+            width: 50%;
+        }
+    }
+
+    .detail-infor-doctor {
         border-top: 1px solid #ddd;
         border-bottom: 1px solid #ddd;
         background-color: #f9f9f9;
         padding: 10px 100px;
 
-        h3{
+        h3 {
             font-size: 17px;
         }
-        img{
+
+        img {
             width: 100%;
         }
     }
 
-    .comment-doctor{
+    .comment-doctor {
         height: 50px;
     }
 }
