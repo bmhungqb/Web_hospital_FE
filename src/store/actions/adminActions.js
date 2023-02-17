@@ -240,7 +240,6 @@ export const saveDetailDoctor = (data) => {
                     type: actionTypes.SAVE_DETAIL_DOCTOR_SUCCESS,
                 })
             } else {
-                console.log('error save doctor: ', res)
                 toast.error("Save Infor doctor error!")
                 dispatch({
                     type: actionTypes.SAVE_DETAIL_DOCTOR_FAILED,
