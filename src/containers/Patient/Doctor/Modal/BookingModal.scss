@@ -4,8 +4,11 @@
         flex-direction: column;
 
         .booking-modal-header {
-            height: 30px;
+            height: 45px;
             border-bottom: 1px solid #ccc;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
 
             .left {
                 font-size: 15px;
@@ -16,12 +19,18 @@
             .right {
                 float: right;
                 cursor: pointer;
+                font-size: 26px;
+                margin-right: 10px;
+
+                &:hover {
+                    color: red;
+                }
             }
         }
 
         .booking-modal-body {
             height: 100%;
-            padding: 15px;
+            padding: 5px;
         }
 
         .booking-modal-footer {
