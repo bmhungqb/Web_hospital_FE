@@ -47,7 +47,6 @@ class TableManageUser extends Component {
     }
     render() {
         let arrUsers = this.state.usersRedux;
-        console.log("allUsers: ", arrUsers)
         return (
             <React.Fragment>
                 <table id="TableManageUser">

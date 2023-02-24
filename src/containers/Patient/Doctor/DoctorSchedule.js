@@ -159,7 +159,7 @@ class DoctorSchedule extends Component {
                 <BookingModal
                     isOpenModal={this.state.isOpenModalBooking}
                     closeBookingModal={this.closeBookingModal}
-                    dataScheduleTimeModal={this.dataScheduleTimeModal}
+                    dataScheduleTimeModal={this.state.dataScheduleTimeModal}
                 />
             </>
         );
