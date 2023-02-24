@@ -128,9 +128,9 @@ class ManageDoctor extends Component {
             doctorId: this.state.selectedOption.value,
             action: hasOldData === true ? CRUD_ACTIONS.EDIT : CRUD_ACTIONS.CREATE,
 
-            selectedPrice: this.state.selectedPrice,
-            selectedPayment: this.state.selectedPayment,
-            selectedProvince: this.state.selectedProvince,
+            selectedPrice: this.state.selectedPrice.value,
+            selectedPayment: this.state.selectedPayment.value,
+            selectedProvince: this.state.selectedProvince.value,
             nameClinic: this.state.nameClinic,
             addressClinic: this.state.addressClinic,
             note: this.state.note
@@ -209,7 +209,6 @@ class ManageDoctor extends Component {
     }
     render() {
         let { hasOldData } = this.state
-        console.log("dasdsa: ", this.state)
         return (
             <div className='manage-doctor-container'>
                 <div className='manage-doctor-title'>
@@ -315,7 +314,9 @@ class ManageDoctor extends Component {
                         {hasOldData === true ?
                             <span>
                                 <FormattedMessage id="admin.manage-doctor.save" />
-                            </span> : <span>
+                            </span>
+                            :
+                            <span>
                                 <FormattedMessage id="admin.manage-doctor.add" />
                             </span>
                         }
