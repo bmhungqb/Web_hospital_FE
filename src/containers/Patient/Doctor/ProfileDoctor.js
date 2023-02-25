@@ -58,10 +58,8 @@ class ProfileDoctor extends Component {
         return <></>
     }
     render() {
-        console.log("this state: ", this.state)
         let { dataProfile, isShowDescriptionDoctor } = this.state
         let { language, dataScheduleTimeModal } = this.props
-
         let nameVi = '', nameEn = '';
         if (dataProfile && dataProfile.positionData) {
             nameVi = `${dataProfile.positionData.valueVi},${dataProfile.lastName} ${dataProfile.firstName}`;
