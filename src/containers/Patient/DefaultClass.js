@@ -15,8 +15,6 @@ class DefaultClass extends Component {
         }
     }
     render() {
-        let { isShowDetailInfor, extraInfor } = this.state
-        let { language } = this.props
         return (
             <div></div>
         );
