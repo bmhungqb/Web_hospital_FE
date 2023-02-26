@@ -40,7 +40,6 @@ class ProfileDoctor extends Component {
     }
     renderTimeBooking = (dataScheduleTimeModal) => {
         let { language } = this.props
-        console.log(dataScheduleTimeModal)
         if (dataScheduleTimeModal && !_.isEmpty(dataScheduleTimeModal)) {
             let time = language === LANGUAGES.VI ? dataScheduleTimeModal.timeTypeData.valueVi : dataScheduleTimeModal.timeTypeData.valueEn
 
@@ -99,7 +98,7 @@ class ProfileDoctor extends Component {
                     {dataProfile && dataProfile.Doctor_Infor && language === LANGUAGES.VI &&
                         < NumberFormat
                             className='currency'
-                            value={dataProfile.Doctor_Infor.priceTypeData.valueVi}
+                            // value={dataProfile.Doctor_Infor.priceTypeData.valueVi}
                             displayType={'text'}
                             thousandSeparator={true}
                             suffix={'VND'}
@@ -108,7 +107,7 @@ class ProfileDoctor extends Component {
                     {dataProfile && dataProfile.Doctor_Infor && language === LANGUAGES.EN &&
                         < NumberFormat
                             className='currency'
-                            value={dataProfile.Doctor_Infor.priceTypeData.valueEn}
+                            // value={dataProfile.Doctor_Infor.priceTypeData.valueEn}
                             displayType={'text'}
                             thousandSeparator={true}
                             suffix={'$'}
