@@ -17,6 +17,26 @@
                 border: 1px solid black;
                 border-collapse: collapse;
             }
+
+            button {
+                border: none;
+                outline: none;
+                cursor: pointer;
+
+            }
+
+            .mp-btn-confirm {
+                margin-right: 10px;
+                height: 30px;
+                border-radius: 3px;
+                background: orange
+            }
+
+            .mp-btn-confirm {
+                height: 30px;
+                border-radius: 3px;
+                background: rgb(0, 174, 255)
+            }
         }
     }
 }
