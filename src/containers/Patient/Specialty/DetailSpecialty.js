@@ -48,8 +48,6 @@ class DetailSpecialty extends Component {
     }
     render() {
         let { arrDoctorId, dataDetailClinic } = this.state
-
-        console.log('this.state: ', this.state)
         let { language } = this.props
         return (
             <div className='detail-specialty-container'>

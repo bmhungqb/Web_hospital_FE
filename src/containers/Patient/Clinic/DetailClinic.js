@@ -90,7 +90,6 @@ class DetailClinic extends Component {
     render() {
         let { arrDoctorId, dataDetailClinic, listProvince } = this.state
 
-        console.log('this.state: ', this.state)
         let { language } = this.props
         return (
             <div className='detail-specialty-container'>
@@ -126,7 +125,6 @@ class DetailClinic extends Component {
                                                 isShowDescriptionDoctor={true}
                                                 isShowLinkDetail={true}
                                                 isShowPrice={false}
-                                            // dataScheduleTimeModal={dataScheduleTimeModal}
                                             />
                                         </div>
                                     </div>
